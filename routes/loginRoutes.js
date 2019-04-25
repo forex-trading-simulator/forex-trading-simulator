@@ -23,6 +23,11 @@ routes.post('/',(req,res) => {
         if(user){
             req.session.isLogin = true
             req.session.username = user.username
+            req.session.rupiahBalance = user.rupiahBalance
+            req.session.dollarBalance = user.dollarBalance
+            req.session.euroBalance = user.euroBalance
+            req.session.poundsBalance = user.poundsBalance
+            req.session.userId = user.id
             res.redirect('/profile')
         } else {
             res.send('salah username/password')
