@@ -22,6 +22,18 @@ app.get('/',(req,res) => {
     res.render('home.ejs')
 })
 
+
+app.get('/logout', function (req, res, next){
+    req.session.destroy((err) => {
+        if(err){
+            res.send(err)
+        } else {
+            console.log(req.session)
+            res.redirect('/')
+        }
+    })
+})
+
 app.use('/learning', learningRoutes)
 app.use('/login', loginRoutes)
 app.use('/profile', profileRoutes)
