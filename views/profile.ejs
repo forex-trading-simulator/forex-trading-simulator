@@ -108,12 +108,14 @@
                 <th>Currency</th>
                 <th>Amount</th>
                 <th>Date</th>
+                <th>Description</th>
               </tr>
               <% for (let i = 0; i < dataUser.Transactions.length; i++) {%>
                 <tr>
                   <td><%= dataUser.Transactions[i].Currency.name %></td>
                   <td><%= dataUser.Transactions[i].amount   %></td>
                   <td><%= dataUser.Transactions[i].updatedAt %></td>
+                  <td><%= dataUser.Transactions[i].description %></td>
                 </tr>
                 <% } %>
               
