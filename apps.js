@@ -6,7 +6,14 @@ const loginRoutes = require('./routes/loginRoutes')
 const profileRoutes = require('./routes/profileRoutes')
 const registerRoutes = require('./routes/registerRoutes')
 const tradingRoutes = require('./routes/tradingRoutes')
+const session = require('express-session')
+
 app.use(express.urlencoded({extended : false}))
+
+app.use(session ({
+    secret:'forex',
+    resave: false
+}))
 
 app.get('/',(req,res) => {
     res.render('home.ejs')
