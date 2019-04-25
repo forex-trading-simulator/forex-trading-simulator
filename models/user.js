@@ -22,16 +22,17 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isEmail:true
-      },
-      unique: {
+        len: {
+          args: [5, 15],
+          msg: 'Username Minimum 5 and maximum 15 character'
+        },
+        unique: {
           args: true,
-          msg: 'Email address already in use!'
-      },
-      len: {
-        args: [9, 35],
-        msg: 'Please provide field within 9 to 35 characters.'
+          msg: 'username in use!'
+        }
+
       }
+      
     },
     password: DataTypes.STRING
   }, {});
