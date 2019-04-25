@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -52,44 +55,73 @@
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #4CAF50;
+  background-color: rgb(39, 39, 39);
   color: white;
 }
     </style>
 </head>
 <body>
+  
     <%-include('../partial/navbar.ejs') %>
-    <h1><%= dataUser.firstName %></h1>
-    <h3><%= dataUser.id %></h3>
-    <h3><%= dataUser.email %></h3>
     
-    <table style="width:100%">
-            <tr>
-              <th><h1>RUPIAH</h1></th>
-              <th><h1>USD</h1></th> 
-              <th><h1>EURO</h1></th>
-              <th><h1>POUND</h1></th>
-            </tr>
+    <div class="container">    
+        <div class="row">
+            <div class="panel panel-default">
+             <div class="panel-body">
+            <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+             <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive"> 
            
-          </table>
+       
+            </div>
+            <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8" >
+                <div class="container" >
+                  <h2><%= dataUser.firstName %></h2>
+                  <p>Email :   <b><%= dataUser.email %></b></p>
+                  <p>userID :   <b><%= dataUser.id %></b></p>    
+                </div>
 
-    <table id="customers">
-            <tr>
-              <th>Currency</th>
-              <th>Amount</th>
-              <th>Date</th>
-            </tr>
-            <% for (let i = 0; i < dataUser.Transactions.length; i++) {%>
+                <div class="col-sm-5 col-xs-6 tital " >Date Of Joining: <%= dataUser.createdAt %></div>
+                <table style="width:90%">
+                    <tr>
+                      <th style="text-align:center"><h2>RUPIAH</h2></th>
+                      <th style="text-align:center"><h2>USD</h2></th> 
+                      <th style="text-align:center"><h2>EURO</h2></th>
+                      <th style="text-align:center"><h2>POUND</h2></th>
+                    </tr>
+                   <tr>
+                      <th style="text-align:center"><h3><%= dataUser.rupiahBalance %></h3></th>
+                      <th style="text-align:center"><h3><%= dataUser.dollarBalance %></h3></th> 
+                      <th style="text-align:center"><h3><%= dataUser.euroBalance %></h3></th>
+                      <th style="text-align:center"><h3><%= dataUser.poundsBalance %></h3></th>
+                    </tr>
+                  </table>
+              </div>
+      </div>
+  </div>
+  </div>
+    
+    <div class="container">
+            <h1 style="text-align:center">Transactions History</h1>
+  
+      <table id="customers">
+
               <tr>
-                <td><%= dataUser.Transactions[i].Currency.name %></td>
-                <td><%= dataUser.Transactions[i].amount   %></td>
-                <td><%= dataUser.Transactions[i].updatedAt %></td>
+                <th>Currency</th>
+                <th>Amount</th>
+                <th>Date</th>
               </tr>
+              <% for (let i = 0; i < dataUser.Transactions.length; i++) {%>
+                <tr>
+                  <td><%= dataUser.Transactions[i].Currency.name %></td>
+                  <td><%= dataUser.Transactions[i].amount   %></td>
+                  <td><%= dataUser.Transactions[i].updatedAt %></td>
+                </tr>
+                <% } %>
               
-              <% } %>
-            
-           
-          </table>
+             
+            </table>
+    </div>
+   
 
 
 
