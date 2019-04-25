@@ -59,14 +59,14 @@
   <div class="column" style="background-color:#aaa;">
     <h1>1 USD = <%= sendCurrent[0].value%> Rupiah</h1>
     <p><%= sendCurrent[0].updatedAt%></p>
-    <form action="/" method="POST">
-        <input type="radio" name="BUY" value="20">20<br>
+    <form action="/buy/<%= sendCurrent[0].id %>" method="POST">
+        <input type="radio" id="value20" value="20" >20<br>
         <input type="radio" name="BUY" value="50">50<br>
         <input type="radio" name="BUY" value="100">100<br>
-        <button type="submit">BUY</button>
+        <button type="submit" onclick="getValue()">BUY</button>
     </form>
     <form action="/" method="POST">
-        <input type="radio" name="SELL" value="20">20<br>
+        <input type="radio" name="SELL" value="20" checked>20<br>
         <input type="radio" name="SELL" value="50">50<br>
         <input type="radio" name="SELL" value="100">100<br>
         <button type="submit">SELL</button>
@@ -75,14 +75,14 @@
   <div class="column" style="background-color:#bbb;">
     <h1>1 EURO = <%= sendCurrent[1].value%> Rupiah</h1>
     <p>Some text..</p>
-    <form action="/" method="POST">
-        <input type="radio" name="BUY" value="20">20<br>
+    <form action="/buy/<%= sendCurrent[1].id %>" method="POST">
+        <input type="radio" name="BUY" value="20" checked>20<br>
         <input type="radio" name="BUY" value="50">50<br>
         <input type="radio" name="BUY" value="100">100<br>
         <button type="submit">BUY</button>
     </form>
-    <form action="/" method="POST">
-        <input type="radio" name="SELL" value="20">20<br>
+    <form action="/sell" method="POST">
+        <input type="radio" name="SELL" value="20" checked>20<br>
         <input type="radio" name="SELL" value="50">50<br>
         <input type="radio" name="SELL" value="100">100<br>
         <button type="submit">SELL</button>
@@ -91,8 +91,8 @@
   <div class="column" style="background-color:#ccc;">
     <h1>1 POUNDS = <%= sendCurrent[2].value%> Rupiah</h1>
     <p>Some text..</p>
-    <form action="/" method="POST">
-        <input type="radio" name="BUY" value="20">20<br>
+    <form action="/buy/<%= sendCurrent[2].id %>" method="POST">
+        <input type="radio" name="BUY" value="20" checked>20<br>
         <input type="radio" name="BUY" value="50">50<br>
         <input type="radio" name="BUY" value="100">100<br>
         <button type="submit">BUY</button>

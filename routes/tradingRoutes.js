@@ -18,6 +18,14 @@ routes.get('/',(req,res) => {
     })
 })
 
+routes.post('/buy/:currencyId', (req, res) => {
+    function getValue(){
+        if(document.getElementById('value20').checked){
+            console.log(req.body.value)
+        }
+    }
+})
+
 
 
 module.exports = routes
