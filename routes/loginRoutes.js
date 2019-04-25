@@ -1,9 +1,10 @@
 const routes = require('express').Router()
 const Model = require('../models')
 const userModel = Model.Users
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 // const currencyModel = Model.Currencies
 // const transactionModel = Model.Transactions
-
 
 routes.get('/',(req,res) => {
     if(req.session.isLogin === undefined){
@@ -13,14 +14,16 @@ routes.get('/',(req,res) => {
 })
 
 routes.post('/',(req,res) => {
+    
     userModel.findOne({
         where:{
-            username: req.body.username,
-            password: req.body.password
+            username: req.body.username
         }
     })
     .then(user => {
-        if(user){
+        let hash = user.password
+
+        if(bcrypt.compareSync(req.body.password, hash) == true){
             req.session.isLogin = true
             req.session.username = user.username
             req.session.rupiahBalance = user.rupiahBalance

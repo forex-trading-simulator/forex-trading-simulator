@@ -3,6 +3,8 @@ const Model = require('../models')
 const userModel = Model.Users
 const currencyModel = Model.Currencies
 const transactionModel = Model.Transactions
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 
 routes.get('/',(req,res) => {
@@ -10,12 +12,14 @@ routes.get('/',(req,res) => {
 })
 
 routes.post('/',(req,res) => {
+    var hash = bcrypt.hashSync(req.body.password, saltRounds);
+    console.log(hash)
     let inputData = {
         firstName : req.body.first_name,
         lastName : req.body.last_name,
         email : req.body.email,
         username : req.body.username,
-        password : req.body.password,
+        password : hash,
         rupiahBalance : 10000000,
         dollarBalance : 0,
         euroBalance : 0,

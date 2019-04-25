@@ -19,7 +19,9 @@ routes.get('/',(req,res) => {
     .then(user => {
        console.log(req.session)
         res.render('profile.ejs', {
-            dataUser: user
+            dataUser: user,
+            // fullname: user.getFullName()
+            
         })
     })
 })

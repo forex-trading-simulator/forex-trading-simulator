@@ -28,14 +28,6 @@ app.use('/profile', profileRoutes)
 app.use('/register', registerRoutes)
 app.use('/trading', tradingRoutes)
 
-
-
-
-
-
-
-
-
 app.listen(port, () => {
     console.log('this apps running on port' + port)
 })
