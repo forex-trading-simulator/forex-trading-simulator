@@ -10,7 +10,8 @@ routes.get('/',(req,res) => {
     currencyModel.findAll()
     .then(gotData => {
         res.render('trading.ejs',{
-            sendCurrent : gotData
+            sendCurrent : gotData,
+            nowdate : new Date()
         })
 
     })

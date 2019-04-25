@@ -6,6 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Lerning</title>
     <style>
+        * {
+  box-sizing: border-box;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  height: 500px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
             ul {
             list-style-type: none;
             margin: 0;
@@ -30,10 +48,78 @@
             li a:hover {
             background-color: #111;
             }
+
+            body{
+				margin:0;
+				padding:0;
+				font-family: Sans-Serif;
+                line-height: 1.5em;
+                background-color:rgb(255, 255, 255)
+			}
+			
+			main {
+				padding-bottom: 10010px;
+				margin-bottom: -10000px;
+				float: left;
+				width: 100%;
+			}
+			
+			#nav {
+				float: left;
+				width: 230px;
+				margin-left: -100%;
+				padding-bottom: 10010px;
+				margin-bottom: -10000px;
+				background: #eee;
+			}
+			
+			#wrapper {
+				overflow: hidden;
+			}
+			
+			#content {
+				margin-left: 230px; /* Same as 'nav' width */
+			}
+			
+			.innertube{
+				margin: 15px; /* Padding for content */
+				margin-top: 0;
+			}
+			
+			p {
+				color: #555;
+			}
+	
+			nav ul {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+			}
+			
+			nav ul a {
+				color: darkgreen;
+				text-decoration: none;
+            }
+            
         </style>
 </head>
 <body>
         <%-include('../partial/navbar.ejs') %>
-    <h1>INI HALAMAN LEARNING</h1>
+       
+
+<div class="row">
+  <div class="column" style="background-color:rgb(255, 255, 255);">
+   
+  </div>
+  <div class="column" style="background-color:#bbb;">
+    <h2>Column 2</h2>
+    <p>Some text..</p>
+  </div>
+  <div class="column" style="background-color:rgb(255, 255, 255);">
+   
+  </div>
+</div>
+
+    
 </body>
 </html>

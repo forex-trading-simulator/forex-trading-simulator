@@ -48,17 +48,65 @@
             li a:hover {
             background-color: #111;
             }
+            form {
+              display: inline-block;
+            }
+            .example1 {
+ height: 50px;	
+ overflow: hidden;
+ position: relative;
+ background-color: #333
+}
+.example1 h3 {
+ font-size: 3em;
+ color: rgb(255, 255, 255);
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ margin: 0;
+ line-height: 50px;
+ text-align: center;
+ /* Starting position */
+ -moz-transform:translateX(100%);
+ -webkit-transform:translateX(100%);	
+ transform:translateX(100%);
+ /* Apply animation to this element */	
+ -moz-animation: example1 15s linear infinite;
+ -webkit-animation: example1 15s linear infinite;
+ animation: example1 15s linear infinite;
+}
+/* Move it (define the animation) */
+@-moz-keyframes example1 {
+ 0%   { -moz-transform: translateX(100%); }
+ 100% { -moz-transform: translateX(-100%); }
+}
+@-webkit-keyframes example1 {
+ 0%   { -webkit-transform: translateX(100%); }
+ 100% { -webkit-transform: translateX(-100%); }
+}
+@keyframes example1 {
+ 0%   { 
+ -moz-transform: translateX(100%); /* Firefox bug fix */
+ -webkit-transform: translateX(100%); /* Firefox bug fix */
+ transform: translateX(100%); 		
+ }
+ 100% { 
+ -moz-transform: translateX(-100%); /* Firefox bug fix */
+ -webkit-transform: translateX(-100%); /* Firefox bug fix */
+ transform: translateX(-100%); 
+ }
+}
         </style>
 </head>
 <body>
         <%-include('../partial/navbar.ejs') %>
     
-    <h2 style="text-align:center">MARKET TODAY</h2>
+    <h1 style="text-align:center">TODAY'S MARKET</h1>
 
 <div class="row">
   <div class="column" style="background-color:#aaa;">
     <h1>1 USD = <%= sendCurrent[0].value%> Rupiah</h1>
-    <p><%= sendCurrent[0].updatedAt%></p>
+    <p><%= nowdate %></p>
     <form action="/trading/buy/<%= sendCurrent[0].id %>" method="POST">
         <input type="radio" name="BUY" value= <%= [sendCurrent[0].value,20] %> >20<br>
         <input type="radio" name="BUY" value= <%= [sendCurrent[0].value,50] %>>50<br>
@@ -74,7 +122,7 @@
   </div>
   <div class="column" style="background-color:#bbb;">
     <h1>1 EURO = <%= sendCurrent[1].value%> Rupiah</h1>
-    <p>Some text..</p>
+    <p><%= nowdate %></p>
     <form action="/trading/buy/<%= sendCurrent[1].id %>" method="POST">
         <input type="radio" name="BUY" value=<%= [sendCurrent[1].value,20] %>>20<br>
         <input type="radio" name="BUY" value=<%= [sendCurrent[1].value,50] %>>50<br>
@@ -90,7 +138,7 @@
   </div>
   <div class="column" style="background-color:#ccc;">
     <h1>1 POUNDS = <%= sendCurrent[2].value%> Rupiah</h1>
-    <p>Some text..</p>
+    <p><%= nowdate %></p>
     <form action="/trading/buy/<%= sendCurrent[2].id %>" method="POST">
         <input type="radio" name="BUY" value=<%= [sendCurrent[2].value,20] %>>20<br>
         <input type="radio" name="BUY" value=<%= [sendCurrent[2].value,50] %>>50<br>
@@ -105,5 +153,9 @@
     </form>
   </div>
 </div>
+
+<div class="example1">
+  <h3>EURSD 1.1136 +0.03% /  USDJPY 2.342 +0.87% / USDCAD 2.424 1.9% / RTSF 2.435 1.2% </h3>
+  </div>
 </body>
 </html>
