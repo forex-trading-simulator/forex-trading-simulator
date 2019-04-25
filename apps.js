@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const cookieParser = require('cookie-parser')
 const port = 3456
 const learningRoutes = require('./routes/learningRoutes')
 const loginRoutes = require('./routes/loginRoutes')
@@ -8,11 +9,13 @@ const registerRoutes = require('./routes/registerRoutes')
 const tradingRoutes = require('./routes/tradingRoutes')
 const session = require('express-session')
 
+app.use(cookieParser())
 app.use(express.urlencoded({extended : false}))
 
 app.use(session ({
     secret:'forex',
-    resave: false
+    resave: true,
+    saveUninitialized: true
 }))
 
 app.get('/',(req,res) => {
