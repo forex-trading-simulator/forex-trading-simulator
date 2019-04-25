@@ -1,8 +1,21 @@
 const routes = require('express').Router()
+const Model = require('../models')
+const userModel = Model.Users
+const transactionModel = Model.Transactions
+const currencyModel = Model.Currencies
 
 
 routes.get('/',(req,res) => {
-    res.render('trading.ejs')
+    currencyModel.findAll()
+    .then(gotData => {
+        res.render('trading.ejs',{
+            sendCurrent : gotData
+        })
+
+    })
+    .catch(err => {
+        res.send(err)
+    })
 })
 
 
