@@ -10,14 +10,18 @@ routes.get('/',(req,res) => {
 })
 
 routes.post('/',(req,res) => {
-    userModel.findAll({
+    userModel.findOne({
         where:{
-            username : req.body.username,
-            password : req.body.password
+            username: req.body.username,
+            password: req.body.password
         }
     })
-    .then(success => {
-        res.redirect('profile')   
+    .then(user => {
+        if(user){
+            res.redirect('/profile')
+        } else {
+            res.send('salah username/password')
+        }
     })
     .catch(err => {
         res.send(err)
