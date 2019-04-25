@@ -6,7 +6,11 @@ module.exports = (sequelize, DataTypes) => {
     lastName: DataTypes.STRING,
     email: DataTypes.STRING,
     username: DataTypes.STRING,
-    password: DataTypes.STRING
+    password: DataTypes.STRING,
+    rupiahBalance: DataTypes.INTEGER,
+    dollarBalance: DataTypes.INTEGER,
+    euroBalance: DataTypes.INTEGER,
+    poundsBalance: DataTypes.INTEGER
   }, {
     hooks: {
       beforeCreate : function(user){
@@ -19,7 +23,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
   User.associate = function(models) {
-    // associations can be defined here
+    User.hasMany(models.Transactions, {
+          foreignKey: 'userId'
+    })
+    
+    // User.belongsToMany(models.Currencies,{
+    //   through: 'Transactions',
+    //   foreignKey: 'userId'
+    // })
   };
   return User;
 };

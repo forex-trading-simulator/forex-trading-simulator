@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Profile</title>
     <style>
+        
         ul {
         list-style-type: none;
         margin: 0;
@@ -30,11 +31,69 @@
         li a:hover {
         background-color: #111;
         }
+
+
+        #customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
     </style>
 </head>
 <body>
     <%-include('../partial/navbar.ejs') %>
-    <h1>ini Profile</h1>
+    <h1><%= dataUser.firstName %></h1>
+    <h3><%= dataUser.id %></h3>
+    <h3><%= dataUser.email %></h3>
     
+    <table style="width:100%">
+            <tr>
+              <th><h1>RUPIAH</h1></th>
+              <th><h1>USD</h1></th> 
+              <th><h1>EURO</h1></th>
+              <th><h1>POUND</h1></th>
+            </tr>
+           
+          </table>
+
+    <table id="customers">
+            <tr>
+              <th>Currency</th>
+              <th>Amount</th>
+              <th>Date</th>
+            </tr>
+
+
+            <% for (let i = 0; i < dataUser.Transactions.length; i++) {%>
+              <tr>
+                <td><%= dataUser.Transactions[i].Currency.name %></td>
+                <td><%= dataUser.Transactions[i].amount   %></td>
+                <td><%= dataUser.Transactions[i].updatedAt %></td>
+              </tr>
+              
+              <% } %>
+            
+           
+          </table>
+
+
+
 </body>
 </html>

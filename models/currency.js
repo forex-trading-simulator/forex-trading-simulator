@@ -5,7 +5,16 @@ module.exports = (sequelize, DataTypes) => {
     value: DataTypes.INTEGER
   }, {});
   Currency.associate = function(models) {
-    // associations can be defined here
+    Currency.hasMany(models.Transactions, {
+      foreignKey: 'currencyId'
+    })
+    
+    
+    // Currency.belongsToMany(models.Users,{
+    //   through: 'Transactions',
+    //   foreignKey: 'currencyId'
+    // })
   };
   return Currency;
+  
 };
