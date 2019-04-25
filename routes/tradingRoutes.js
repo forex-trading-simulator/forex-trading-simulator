@@ -23,14 +23,26 @@ routes.post('/buy/:id',(req,res) => {
     console.log(req.session)
     let splitedBody = req.body.BUY.split(",")
     if(req.params.id == 1) {
-        var newrupiahBalance = req.session.rupiahBalance - Number(splitedBody[0] * splitedBody[1])
-        var newDollarBalance = req.session.dollarBalance + Number(splitedBody[1])
+        if(req.session.rupiahBalance > Number(splitedBody[0] * splitedBody[1])){
+            var newrupiahBalance = req.session.rupiahBalance - Number(splitedBody[0] * splitedBody[1])
+            var newDollarBalance = req.session.dollarBalance + Number(splitedBody[1])
+        } else {
+            res.send('uangnya gak cukup')
+        }
     } else if (req.params.id == 2){
-        var newrupiahBalance = req.session.rupiahBalance - Number(splitedBody[0] * splitedBody[1])
-        var newEuroBalance = req.session.euroBalance + Number(splitedBody[1])
+        if(req.session.rupiahBalance > Number(splitedBody[0] * splitedBody[1])){
+            var newrupiahBalance = req.session.rupiahBalance - Number(splitedBody[0] * splitedBody[1])
+            var newEuroBalance = req.session.euroBalance + Number(splitedBody[1])
+        } else {
+            res.send('uangnya gak cukup')
+        }
     } else if (req.params.id == 3){
-        var newrupiahBalance = req.session.rupiahBalance - Number(splitedBody[0] * splitedBody[1])
-        var newPoundsBalance = req.session.poundsBalance + Number(splitedBody[1])
+        if(req.session.rupiahBalance > Number(splitedBody[0] * splitedBody[1])){
+            var newrupiahBalance = req.session.rupiahBalance - Number(splitedBody[0] * splitedBody[1])
+            var newPoundsBalance = req.session.poundsBalance + Number(splitedBody[1])
+        } else {
+            res.send('uangnya gak cukup')
+        }
     }
     
     let id = req.params.id
@@ -67,14 +79,26 @@ routes.post('/sell/:id',(req,res) => {
     console.log(req.session)
     let splitedBody = req.body.SELL.split(",")
     if(req.params.id == 1) {
-        var newrupiahBalance = req.session.rupiahBalance + Number(splitedBody[0] * splitedBody[1])
-        var newDollarBalance = req.session.dollarBalance - Number(splitedBody[1])
+        if(req.session.dollarBalance > Number(splitedBody[1])){
+            var newrupiahBalance = req.session.rupiahBalance + Number(splitedBody[0] * splitedBody[1])
+            var newDollarBalance = req.session.dollarBalance - Number(splitedBody[1])
+        } else {
+            res.send('jumlah uang gak cukup')
+        }
     } else if (req.params.id == 2){
-        var newrupiahBalance = req.session.rupiahBalance + Number(splitedBody[0] * splitedBody[1])
-        var newEuroBalance = req.session.euroBalance - Number(splitedBody[1])
+        if(req.session.dollarBalance > Number(splitedBody[1])){
+            var newrupiahBalance = req.session.rupiahBalance + Number(splitedBody[0] * splitedBody[1])
+            var newEuroBalance = req.session.euroBalance - Number(splitedBody[1])
+        } else {
+            res.send('jumlah uang gak cukup')
+        }
     } else if (req.params.id == 3){
-        var newrupiahBalance = req.session.rupiahBalance + Number(splitedBody[0] * splitedBody[1])
-        var newPoundsBalance = req.session.poundsBalance - Number(splitedBody[1])
+        if(req.session.dollarBalance > Number(splitedBody[1])){
+            var newrupiahBalance = req.session.rupiahBalance + Number(splitedBody[0] * splitedBody[1])
+            var newPoundsBalance = req.session.poundsBalance - Number(splitedBody[1])
+        } else {
+            res.send('jumlah uang gak cukup')
+        }
     }
     let id = req.params.id
     req.session.currencyId = id
