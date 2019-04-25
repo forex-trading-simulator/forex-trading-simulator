@@ -35,5 +35,35 @@
 <body>
         <%-include('../partial/navbar.ejs') %>
     <h1>TRADE</h1>
+    <div class="row">
+        <div class="column" style="background-color:#aaa;">
+            <h2>Column 1</h2>
+            <form action="/beli/:currencyId" method="POST">
+                <button type="submit">Beli</button>
+            </form>
+            <form action="/Jual/:currencyId" method="POST">
+                <button type="submit">Jual</button>
+            </form>
+        </div>
+        <div class="column" style="background-color:#bbb;">
+            <h2>Column 2</h2>
+            <form action="/beli/:currencyId" method="POST">
+                <button type="submit">Beli</button>
+            </form>
+            <form action="/Jual/:currencyId" method="POST">
+                <button type="submit">Jual</button>
+            </form>
+        </div>
+        <div class="column" style="background-color:#ccc;">
+            <h2>Column 3</h2>
+            <form action="/beli/:currencyId" method="POST">
+                <button type="submit">Beli</button>
+            </form>
+            <form action="/Jual/:currencyId" method="POST">
+                <button type="submit">Jual</button>
+            </form>
+        </div>
+      </div>
+    
 </body>
 </html>
