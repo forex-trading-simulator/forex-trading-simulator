@@ -1,5 +1,8 @@
 'use strict';
-const crypto = require('crypto')
+
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('Users', {
     firstName: DataTypes.STRING,
@@ -11,17 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     dollarBalance: DataTypes.INTEGER,
     euroBalance: DataTypes.INTEGER,
     poundsBalance: DataTypes.INTEGER
-  }, {
-    hooks: {
-      beforeCreate : function(user){
-        const secret = 'wakanda'
-        const hash = crypto.createHmac('sha256',secret)
-                                      .update(user.password)
-                                      .digest('hex')
-        user.password = hash
-      }
-    }
-  });
+  },{});
+  
   User.associate = function(models) {
     User.hasMany(models.Transactions, {
           foreignKey: 'userId'
@@ -32,5 +26,9 @@ module.exports = (sequelize, DataTypes) => {
     //   foreignKey: 'userId'
     // })
   };
+  User.prototype.getFullName = function() {
+    return [this.firstName, this.lastName].join(" ")
+  }
+  
   return User;
 };
