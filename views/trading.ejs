@@ -6,6 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>TRADE</title>
     <style>
+        * {
+  box-sizing: border-box;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  height: 400px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
             ul {
             list-style-type: none;
             margin: 0;
@@ -34,6 +52,58 @@
 </head>
 <body>
         <%-include('../partial/navbar.ejs') %>
-    <h1>TRADE</h1>
+    
+    <h2 style="text-align:center">MARKET TODAY</h2>
+
+<div class="row">
+  <div class="column" style="background-color:#aaa;">
+    <h1>1 USD = <%= sendCurrent[0].value%> Rupiah</h1>
+    <p><%= sendCurrent[0].updatedAt%></p>
+    <form action="/" method="POST">
+        <input type="radio" name="BUY" value="20">20<br>
+        <input type="radio" name="BUY" value="50">50<br>
+        <input type="radio" name="BUY" value="100">100<br>
+        <button type="submit">BUY</button>
+    </form>
+    <form action="/" method="POST">
+        <input type="radio" name="SELL" value="20">20<br>
+        <input type="radio" name="SELL" value="50">50<br>
+        <input type="radio" name="SELL" value="100">100<br>
+        <button type="submit">SELL</button>
+    </form>
+  </div>
+  <div class="column" style="background-color:#bbb;">
+    <h1>1 EURO = <%= sendCurrent[1].value%> Rupiah</h1>
+    <p>Some text..</p>
+    <form action="/" method="POST">
+        <input type="radio" name="BUY" value="20">20<br>
+        <input type="radio" name="BUY" value="50">50<br>
+        <input type="radio" name="BUY" value="100">100<br>
+        <button type="submit">BUY</button>
+    </form>
+    <form action="/" method="POST">
+        <input type="radio" name="SELL" value="20">20<br>
+        <input type="radio" name="SELL" value="50">50<br>
+        <input type="radio" name="SELL" value="100">100<br>
+        <button type="submit">SELL</button>
+    </form>
+  </div>
+  <div class="column" style="background-color:#ccc;">
+    <h1>1 POUNDS = <%= sendCurrent[2].value%> Rupiah</h1>
+    <p>Some text..</p>
+    <form action="/" method="POST">
+        <input type="radio" name="BUY" value="20">20<br>
+        <input type="radio" name="BUY" value="50">50<br>
+        <input type="radio" name="BUY" value="100">100<br>
+        <button type="submit">BUY</button>
+    </form>
+    <form action="/" method="POST">
+        <input type="radio" name="SELL" value="20">20<br>
+        <input type="radio" name="SELL" value="50">50<br>
+        <input type="radio" name="SELL" value="100">100<br>
+        <button type="submit">SELL</button>
+    </form>
+  </div>
+</div>
 </body>
 </html>
