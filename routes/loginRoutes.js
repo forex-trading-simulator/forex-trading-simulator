@@ -6,6 +6,9 @@ const userModel = Model.Users
 
 
 routes.get('/',(req,res) => {
+    if(req.session.isLogin === undefined){
+        req.session.isLogin = false
+    }
     res.render('login.ejs')
 })
 
@@ -18,6 +21,8 @@ routes.post('/',(req,res) => {
     })
     .then(user => {
         if(user){
+            req.session.isLogin = true
+            req.session.username = user.username
             res.redirect('/profile')
         } else {
             res.send('salah username/password')
