@@ -23,7 +23,7 @@ routes.post('/',(req,res) => {
         rupiahBalance : 10000000,
         dollarBalance : 0,
         euroBalance : 0,
-        poundsBalance : 0,
+        poundsBalance : 0
     }
     userModel.create(inputData)
     .then(gotData => {
